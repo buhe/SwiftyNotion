@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NotionRequest {
+public enum NotionRequest {
     case retrieveDatabase(databaseId: String)
     case queryDatabase(databaseId: String)
     

@@ -1,7 +1,7 @@
 import Foundation
 
 @available(iOS 15.0, *)
-struct NotionAPIGateway {
+public struct NotionAPIGateway {
     let secretKey: String
     let baseUrl = "https://api.notion.com/v1"
     
@@ -33,7 +33,7 @@ struct NotionAPIGateway {
     }
 }
 
-extension URLRequest {
+public extension URLRequest {
     init(from notionRequest: NotionRequest, baseUrl: String, secretKey: String) {
         let url = URL(string: "\(baseUrl)\(notionRequest.endpointPath)")!
         var request = URLRequest(url: url)
