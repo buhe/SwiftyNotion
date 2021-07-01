@@ -7,58 +7,58 @@
 
 import Foundation
 
-struct NotionPage: NotionObject {
-    let id: String
-    let createdTime: String
-    let lastEditedTime: String
+public struct NotionPage: NotionObject {
+    public let id: String
+    public let createdTime: String
+    public let lastEditedTime: String
 
-    let archived: Bool
+    public let archived: Bool
     
-    let properties: [String: NotionPageProperty]
+    public let properties: [String: NotionPageProperty]
     
     // TODO: parent, object
 }
 
-struct NotionPageProperty: Decodable {
-    let id: String
-    let type: NotionPagePropertyType
+public struct NotionPageProperty: Decodable {
+    public let id: String
+    public let type: NotionPagePropertyType
     
-    let title: [NotionRichText]?
-    let richText: [NotionRichText]?
-    let number: Int?
-    let select: NotionSelect?
-    let multiSelect: [NotionSelect]?
-    let date: NotionDateRange?
-    let relation: NotionRelation?
-    let people: [NotionPerson]?
-    let checkbox: Bool?
-    let url: String?
-    let email: String?
-    let phoneNumber: String?
+    public let title: [NotionRichText]?
+    public let richText: [NotionRichText]?
+    public let number: Int?
+    public let select: NotionSelect?
+    public let multiSelect: [NotionSelect]?
+    public let date: NotionDateRange?
+    public let relation: NotionRelation?
+    public let people: [NotionPerson]?
+    public let checkbox: Bool?
+    public let url: String?
+    public let email: String?
+    public let phoneNumber: String?
     
     // TODO: formula
 }
 
-enum NotionPagePropertyType: String, Decodable {
+public enum NotionPagePropertyType: String, Decodable {
     case richText, number, select, multiSelect, date, formula, relation, rollup, title, people, files, checkbox, url, email, phoneNumber, createdTime, createdBy, lastEditedTime, lastEditedBy
 }
 
-struct NotionSelect: Decodable {
+public struct NotionSelect: Decodable {
     let id: String
     let name: String
     let color: String
 }
 
-struct NotionDateRange: Decodable {
+public struct NotionDateRange: Decodable {
     let start: Date
     let end: Date
 }
 
-struct NotionRelation: Decodable {
+public struct NotionRelation: Decodable {
     let id: String
 }
 
-struct NotionPerson: Decodable {
+public struct NotionPerson: Decodable {
     let id: String
     let object: String
 }

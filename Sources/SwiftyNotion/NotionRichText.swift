@@ -10,10 +10,10 @@ import UIKit
 
 // TODO: Support all rich text types
 
-struct NotionRichText: Decodable {
-    let type: RichTextType
-    let plainText: String
-    let href: String?
+public struct NotionRichText: Decodable {
+    public let type: RichTextType
+    public let plainText: String
+    public let href: String?
 }
 
 enum RichTextType: String, Decodable {

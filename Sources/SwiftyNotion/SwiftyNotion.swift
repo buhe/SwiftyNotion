@@ -23,13 +23,13 @@ public struct NotionAPIGateway {
         return data
     }
     
-    func retrieveDatabase(withId id: String) async throws -> NotionDatabase {
+    public func retrieveDatabase(withId id: String) async throws -> NotionDatabase {
         let data = try await request(.retrieveDatabase(databaseId: id))
         let database = try decoder.decode(NotionDatabase.self, from: data)
         return database
     }
     
-    func queryDatabase(withId id: String) async throws -> [NotionPage] {
+    public func queryDatabase(withId id: String) async throws -> [NotionPage] {
         let data = try await request(.queryDatabase(databaseId: id))
         let list = try decoder.decode(NotionPageList.self, from: data)
         return list.results
