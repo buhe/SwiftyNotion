@@ -28,7 +28,6 @@ struct NotionAPIGateway {
     
     func queryDatabase(withId id: String) async throws -> [NotionPage] {
         let data = try await request(.queryDatabase(databaseId: id))
-        print(String(data: data, encoding: .utf8)!)
         let list = try decoder.decode(NotionPageList.self, from: data)
         return list.results
     }
