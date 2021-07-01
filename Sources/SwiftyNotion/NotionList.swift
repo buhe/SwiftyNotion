@@ -10,3 +10,7 @@ import Foundation
 struct NotionPageList: Decodable {
     let results: [NotionPage]
 }
+
+struct NotionBlockList: Decodable {
+    let results: [NotionBlock]
+}

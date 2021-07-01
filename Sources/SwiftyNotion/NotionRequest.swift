@@ -22,7 +22,7 @@ public enum NotionRequest {
             
         case .retrievePage(let pageId): return "/pages/\(pageId)"
             
-        case .retrieveBlockChildren(let blockId): return "/block/\(blockId)/children"
+        case .retrieveBlockChildren(let blockId): return "/blocks/\(blockId)/children"
         }
     }
     

@@ -12,23 +12,24 @@ import UIKit
 
 public struct NotionRichText: Decodable {
     public let type: RichTextType
+    public let annotations: RichTextAnnotations
     public let plainText: String
     public let href: String?
 }
 
-enum RichTextType: String, Decodable {
+public enum RichTextType: String, Decodable {
     case text, mention, equation
 }
 
-struct RichTextAnnotations: Decodable {
-    let bold: Bool
-    let italic: Bool
-    let strikethrough: Bool
-    let underline: Bool
-    let code: Bool
+public struct RichTextAnnotations: Decodable {
+    public let bold: Bool
+    public let italic: Bool
+    public let strikethrough: Bool
+    public let underline: Bool
+    public let code: Bool
     
     // TODO: Make this an enum
-    let color: String
+    public let color: String
 }
 
 enum RichTextColor: String, Decodable {

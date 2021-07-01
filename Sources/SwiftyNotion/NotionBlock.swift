@@ -7,66 +7,74 @@
 
 import Foundation
 
-struct NotionBlock: NotionObject {
-    let id: String
-    let createdTime: String
-    let lastEditedTime: String
+public struct NotionBlock: NotionObject {
+    public let id: String
+    public let createdTime: String
+    public let lastEditedTime: String
     
-    let type: BlockType
+    public let type: BlockType
     
-    let paragraph: BlockParagraph?
-    let heading1: BlockHeading1?
-    let heading2: BlockHeading2?
-    let heading3: BlockHeading3?
-    let bulletedListItem: BlockBulletedListItem?
-    let numberedListItem: BlockNumberedListItem?
-    let toDo: BlockToDo?
-    let toggle: BlockToggle?
-    let childPage: BlockPage?
+    public let paragraph: BlockParagraph?
+    public let heading1: BlockHeading1?
+    public let heading2: BlockHeading2?
+    public let heading3: BlockHeading3?
+    public let bulletedListItem: BlockBulletedListItem?
+    public let numberedListItem: BlockNumberedListItem?
+    public let toDo: BlockToDo?
+    public let toggle: BlockToggle?
+    public let childPage: BlockPage?
 }
 
-enum BlockType: String, Decodable {
-    case paragraph, heading1, heading2, heading3, bulletedListItem, numberedListItem, toDo, toggle, childPage, unsupported
+public enum BlockType: String, Decodable {
+    case paragraph, toggle, unsupported
+    
+    case heading1 = "heading_1"
+    case heading2 = "heading_2"
+    case heading3 = "heading_3"
+    case bulletedListItem = "bulleted_list_item"
+    case numberedListItem = "numbered_list_item"
+    case toDo = "to_do"
+    case childPage = "child_page"
 }
 
-struct BlockParagraph: Decodable {
-    let text: [NotionRichText]
-    let children: [NotionBlock]
+public struct BlockParagraph: Decodable {
+    public let text: [NotionRichText]
+    public let children: [NotionBlock]
 }
 
-struct BlockHeading1: Decodable {
-    let text: [NotionRichText]
+public struct BlockHeading1: Decodable {
+    public let text: [NotionRichText]
 }
 
-struct BlockHeading2: Decodable {
-    let text: [NotionRichText]
+public struct BlockHeading2: Decodable {
+    public let text: [NotionRichText]
 }
 
-struct BlockHeading3: Decodable {
-    let text: [NotionRichText]
+public struct BlockHeading3: Decodable {
+    public let text: [NotionRichText]
 }
 
-struct BlockBulletedListItem: Decodable {
-    let text: [NotionRichText]
-    let children: [NotionBlock]
+public struct BlockBulletedListItem: Decodable {
+    public let text: [NotionRichText]
+    public let children: [NotionBlock]
 }
 
-struct BlockNumberedListItem: Decodable {
-    let text: [NotionRichText]
-    let children: [NotionBlock]
+public struct BlockNumberedListItem: Decodable {
+    public let text: [NotionRichText]
+    public let children: [NotionBlock]
 }
 
-struct BlockToDo: Decodable {
-    let text: [NotionRichText]
-    let children: [NotionBlock]
-    let checked: Bool?
+public struct BlockToDo: Decodable {
+    public let text: [NotionRichText]
+    public let children: [NotionBlock]
+    public let checked: Bool?
 }
 
-struct BlockToggle: Decodable {
-    let text: [NotionRichText]
-    let children: [NotionBlock]
+public struct BlockToggle: Decodable {
+    public let text: [NotionRichText]
+    public let children: [NotionBlock]
 }
 
-struct BlockPage: Decodable {
-    let title: String
+public struct BlockPage: Decodable {
+    public let title: String
 }

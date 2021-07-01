@@ -34,6 +34,18 @@ public struct NotionAPIGateway {
         let list = try decoder.decode(NotionPageList.self, from: data)
         return list.results
     }
+    
+    public func retrievePage(withId id: String) async throws -> NotionPage {
+        let data = try await request(.retrievePage(pageId: id))
+        let page = try decoder.decode(NotionPage.self, from: data)
+        return page
+    }
+    
+    public func retrieveBlockChildren(withId id: String) async throws -> [NotionBlock] {
+        let data = try await request(.retrieveBlockChildren(blockId: id))
+        let list = try decoder.decode(NotionBlockList.self, from: data)
+        return list.results
+    }
 }
 
 public extension URLRequest {

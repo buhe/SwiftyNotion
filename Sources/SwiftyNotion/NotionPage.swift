@@ -25,7 +25,7 @@ public struct NotionPageProperty: Decodable {
     
     public let title: [NotionRichText]?
     public let richText: [NotionRichText]?
-    public let number: Int?
+    public let number: Double?
     public let select: NotionSelect?
     public let multiSelect: [NotionSelect]?
     public let date: NotionDateRange?
@@ -40,7 +40,15 @@ public struct NotionPageProperty: Decodable {
 }
 
 public enum NotionPagePropertyType: String, Decodable {
-    case richText, number, select, multiSelect, date, formula, relation, rollup, title, people, files, checkbox, url, email, phoneNumber, createdTime, createdBy, lastEditedTime, lastEditedBy
+    case title, number, select, date, formula, relation, rollup, people, file, checkbox, url, email
+    
+    case richText = "rich_text"
+    case multiSelect = "multi_select"
+    case phoneNumber = "phone_number"
+    case createdTime = "created_time"
+    case createdBy = "created_by"
+    case lastEditedTime = "last_edited_time"
+    case lastEditedBy = "last_edited_by"
 }
 
 public struct NotionSelect: Decodable {
