@@ -14,6 +14,7 @@ struct NotionAPIGateway {
     }
     
     private func request(_ notionRequest: NotionRequest) async throws -> Data {
+        print("URL: " + "\(baseUrl)\(notionRequest.endpointPath)")
         let request = URLRequest(from: notionRequest, baseUrl: baseUrl, secretKey: secretKey)
         let (data, _) = try await URLSession.shared.data(for: request)
         return data
@@ -25,10 +26,11 @@ struct NotionAPIGateway {
         return database
     }
     
-    func queryDatabase(withId id: String) async throws -> NotionDatabase {
+    func queryDatabase(withId id: String) async throws -> [NotionPage] {
         let data = try await request(.queryDatabase(databaseId: id))
-        let database = try decoder.decode(NotionDatabase.self, from: data)
-        return database
+        print(String(data: data, encoding: .utf8)!)
+        let list = try decoder.decode(NotionPageList.self, from: data)
+        return list.results
     }
 }
 
@@ -40,6 +42,7 @@ extension URLRequest {
             "Authorization": "Bearer \(secretKey)",
             "Notion-Version": "2021-05-13"
         ]
+        request.httpMethod = notionRequest.request.rawValue.uppercased()
         self = request
     }
 }

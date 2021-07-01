@@ -14,8 +14,23 @@ struct NotionDatabase: NotionObject {
     
     let title: [NotionRichText]
     
-//    let properties: Properties
+    let properties: [String: NotionDatabaseProperty]
     
     // TODO: parent, properties, object
 }
 
+struct NotionDatabaseProperty: Decodable {
+    let id: String
+    let type: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id, type
+        case title, richText, number, select, multiSelect, date, people, file, checkbox, url, email, phoneNumber, formula, relation, rollUp, createdTime, createdBy, lastEditedTime, lastEditedBy
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(String.self, forKey: .id)
+        self.type = try container.decode(String.self, forKey: .type)
+    }
+}
