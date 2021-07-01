@@ -2,10 +2,10 @@ import Foundation
 
 @available(iOS 15.0, *)
 public struct NotionAPIGateway {
-    let secretKey: String
-    let baseUrl = "https://api.notion.com/v1"
+    private let secretKey: String
+    private let baseUrl = "https://api.notion.com/v1"
     
-    var decoder: JSONDecoder {
+    private var decoder: JSONDecoder {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
@@ -13,8 +13,11 @@ public struct NotionAPIGateway {
         return decoder
     }
     
+    public init(secretKey: String) {
+        self.secretKey = secretKey
+    }
+    
     private func request(_ notionRequest: NotionRequest) async throws -> Data {
-        print("URL: " + "\(baseUrl)\(notionRequest.endpointPath)")
         let request = URLRequest(from: notionRequest, baseUrl: baseUrl, secretKey: secretKey)
         let (data, _) = try await URLSession.shared.data(for: request)
         return data
