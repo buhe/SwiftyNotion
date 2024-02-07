@@ -54,7 +54,7 @@ public extension URLRequest {
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = [
             "Authorization": "Bearer \(secretKey)",
-            "Notion-Version": "2021-05-13"
+            "Notion-Version": "2022-06-28"
         ]
         request.httpMethod = notionRequest.request.rawValue.uppercased()
         self = request
