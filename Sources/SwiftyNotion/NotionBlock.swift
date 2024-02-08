@@ -38,6 +38,7 @@ public enum BlockType: String, Decodable {
     case childPage = "child_page"
     case childDatabase = "child_database"
     case hasChildren = "has_children"
+    case tableRow = "table_row"
 }
 
 public struct BlockParagraph: Decodable {
