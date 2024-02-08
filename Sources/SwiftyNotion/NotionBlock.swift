@@ -23,6 +23,7 @@ public struct NotionBlock: NotionObject {
     public let toDo: BlockToDo?
     public let toggle: BlockToggle?
     public let childPage: BlockPage?
+    public let hasChildren: Bool
 }
 
 public enum BlockType: String, Decodable {
@@ -36,6 +37,7 @@ public enum BlockType: String, Decodable {
     case toDo = "to_do"
     case childPage = "child_page"
     case childDatabase = "child_database"
+    case hasChildren = "has_children"
 }
 
 public struct BlockParagraph: Decodable {
