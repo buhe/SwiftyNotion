@@ -27,7 +27,7 @@ public struct NotionBlock: NotionObject {
 }
 
 public enum BlockType: String, Decodable {
-    case paragraph, toggle, unsupported, code, image
+    case paragraph, toggle, unsupported, code, image, bookmark
     
     case heading1 = "heading_1"
     case heading2 = "heading_2"
