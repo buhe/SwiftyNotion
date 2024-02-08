@@ -37,8 +37,8 @@ public enum BlockType: String, Decodable {
     case toDo = "to_do"
     case childPage = "child_page"
     case childDatabase = "child_database"
-    case hasChildren = "has_children"
     case tableRow = "table_row"
+    case columnList = "column_list"
 }
 
 public struct BlockParagraph: Decodable {
