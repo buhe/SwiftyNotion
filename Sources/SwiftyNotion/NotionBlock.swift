@@ -23,6 +23,7 @@ public struct NotionBlock: NotionObject {
     public let toDo: BlockToDo?
     public let toggle: BlockToggle?
     public let childPage: BlockPage?
+    public let code: NotionCode?
     public let hasChildren: Bool
 }
 
