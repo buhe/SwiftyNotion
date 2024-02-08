@@ -8,6 +8,6 @@
 import Foundation
 
 public struct NotionCode: Decodable {
-    public let richText: [RichTextType]
+    public let richText: [RichTextType]?
     public let language: String
 }
